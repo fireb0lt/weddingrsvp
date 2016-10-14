@@ -1,9 +1,24 @@
+
+
+
+
+
+
+
+
 $(function() {
+  $.fn.popUpMsg = function(text, duration){
+      //Do cool animation
+      $(this).text(text);
+      $(this).css({"opacity":"0","left":"100%"});
+      $(this).animate({ "left": "0" }, duration, "swing" );
+      $(this).animate({ "opacity":"1" }, duration + 50, "swing" );
+    }
 
   //Validate
   function validateSearch(textbox){
     if (textbox.val() == null || textbox.val()==""){
-      alert("Please enter a value in both boxes");
+      $('.msg').popUpMsg("Please enter a value in both boxes",350);
       return false;
     } else {
       return true;
@@ -25,6 +40,8 @@ $(function() {
         success: function(data) {
           console.log('success');
           console.log(JSON.stringify(data));
+          $('.msg').popUpMsg(JSON.stringify(data),350);
+
         }
       });
     }

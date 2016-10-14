@@ -1,7 +1,36 @@
 h2{
-  font-size: 30px;
+  font-size: 40px;
   font-weight: normal;
+  color:#195469;
+
 }
 *{
-  font-family: "Noto",sans-serif;
+  font-family: "Lato",sans-serif;
+  font-weight: normal;
+}
+* h1, * h2, * h3{
+  font-family: "Abhaya Libre", serif;
+}
+
+
+
+.msg-cont{
+  display: block;
+  min-height: 30px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+.msg{
+  position: absolute;
+  height: auto;
+  padding: 12px 15px;
+  background: #ECFFFF;
+  opacity: 0;
+  left:0;
+  top: 0;
+  box-sizing: border-box;
+  color:#195469;
+  font-size: 14px;
 }

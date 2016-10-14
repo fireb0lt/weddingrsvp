@@ -60,26 +60,26 @@ app.get('/', function (req,res) {
 //Search backend
 //
 
-app.get('/about', function (req, res){
-    res.render('about.html');
+app.get('/rsvp', function (req, res){
+    res.render('rsvp.html');
 });
 
 
-app.post('/search', function(req, res){
+app.post('/search', function(req, res, next){
   connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND first = ' + connection.escape(req.body.firstsearch)), function(err,result){
-
-    connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND party_id = ' + connection.escape(result[0].party_id)), function(err,result2){
-      res.send(result2);
-    });
-
+    if (result.length>0) {
+      connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND party_id = ' + connection.escape(result[0].party_id)), function(err,result){
+          res.send(result);
+      });
+    } else {
+      res.send('Sorry, we can\'t find that name, try again!';
+    }
   });
-
-
-
-
-
-
 });
+
+
+
+
 //
 //     // function (){
 //     //   console.log('Lol' + req.body.lastsearch);
