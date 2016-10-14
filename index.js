@@ -72,7 +72,7 @@ app.post('/search', function(req, res, next){
           res.send(result);
       });
     } else {
-      res.send('Sorry, we can\'t find that name, try again!';
+      res.send('Sorry, we can\'t find that name, try again!');
     }
   });
 });
