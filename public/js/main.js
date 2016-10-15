@@ -1,18 +1,9 @@
 
-
-
-
-
-
-
-
 $(function() {
   $.fn.popUpMsg = function(text, duration){
       //Do cool animation
       $(this).text(text);
-      $(this).css({"opacity":"0","left":"100%"});
-      $(this).animate({ "left": "0" }, duration, "swing" );
-      $(this).animate({ "opacity":"1" }, duration + 50, "swing" );
+      $(this).fadeIn(200).delay(duration).fadeOut(300);
     }
 
   //Validate
@@ -38,9 +29,13 @@ $(function() {
         contentType: 'application/json',
         url: '/search',
         success: function(data) {
-          console.log('success');
-          console.log(JSON.stringify(data));
-          $('.msg').popUpMsg(JSON.stringify(data),350);
+          console.log(data);
+          if (data=='Sorry, we can\'t find that name, try again!'){
+            $('.msg').popUpMsg(data,2500);
+          } else {
+            $('.msg').popUpMsg(JSON.stringify(data),2500);
+            
+          }
 
         }
       });

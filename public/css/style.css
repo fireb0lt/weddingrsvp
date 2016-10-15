@@ -1,36 +1,137 @@
 h2{
   font-size: 40px;
   font-weight: normal;
-  color:#195469;
+  color:#222;
 
 }
-*{
-  font-family: "Lato",sans-serif;
+html{
+  font-family: "Cormorant Garamond",sans-serif;
   font-weight: normal;
+  font-size: 16px;
 }
-* h1, * h2, * h3{
-  font-family: "Abhaya Libre", serif;
+h1, h2, h3{
+  font-family: "Cormorant Garamond", serif;
+}
+
+div, input, span{
+  box-sizing: border-box;
 }
 
 
-
-.msg-cont{
-  display: block;
-  min-height: 30px;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  position: relative;
-}
 .msg{
   position: absolute;
   height: auto;
   padding: 12px 15px;
-  background: #ECFFFF;
-  opacity: 0;
-  left:0;
-  top: 0;
+  background: #333;
+  top: 50%;
+  max-width: 800px;
+  min-width: 600px;
+  left: 50%;
+  transform: translate(-50%,-50%);
   box-sizing: border-box;
-  color:#195469;
-  font-size: 14px;
+  color:#fff;
+  z-index: 10;
+  left: 50;
+  display: none;
+}
+html{
+  background: #eee;
+  text-align: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+body{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+}
+
+.rsvp-modal{
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 35px 15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.rsvp-modal h2{
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.sub-copyright{
+  font-size: 12px;
+  font-family: "Cormorant Garamond";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
+}
+.sub-copyright span.big-slash{
+  font-size: 20px;
+  font-weight: lighter;
+  position: relative;
+  display: inline-block;
+  bottom: -2px;
+}
+
+#search-form input[type="textbox"]{
+  width: 100%;
+  padding:5px 15px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border: 1px #aaa solid;
+}
+
+#search-form input[type="textbox"]:focus{
+  border-color: #222;
+}
+
+input{
+  font-family: "Cormorant Garamond";
+}
+input[type="submit"],a.button{
+  background: #111;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  padding: 5px 25px;
+  font-size: 30px;
+  font-weight: light;
+  text-decoration: none;
+}
+a.button.light{
+  background: #fff;
+  color: #111;
+}
+input:focus{
+  box-shadow: none;
+  outline: none;
+}
+.vertical-fields{
+  text-align: left;
+}
+.bg-img{
+  background: url('../img/couple.jpg') no-repeat;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  position: relative;
+}
+.center.entry{
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+}
+.center.entry .button:first-child{
+  margin-right: 25px;
 }

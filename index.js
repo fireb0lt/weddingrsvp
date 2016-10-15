@@ -1,6 +1,6 @@
 var mysql = require ('mysql');
 var express = require ('express');
-var ejs = require ('ejs');
+var exphbs = require ('express-handlebars');
 var bodyParser = require('body-parser');
 var Q = require('q');
 var app = express();
@@ -22,46 +22,24 @@ connection.connect(function (error) {
       console.log('Connected');
     }
 });
-//
-// var guests = {
-//   last_name: 'joii',
-//   first_name: 'poo',
-//   rsvp: 1
-// };
-//
-var helloe ="jo";
-// var last_search = mysql.format("SELECT * FROM guest WHERE last=?", helloe);
-// connection.query(last_search, function(err,result){
-//   if (err){
-//     console.log(err);
-//     return;
-//   } else {
-//     console.log(result);
-//   }
-//
-// })
+
+
 
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
-app.engine('html', require('ejs').renderFile);
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 app.use(bodyParser.json()); // for parsing application/json
 
 
 app.get('/', function (req,res) {
-  connection.query("SELECT * FROM guest", function(error, rows, fields){
-    if(!!error){
-      console.log('Query Err');
-    } else {
-      console.log("Query Success");
-      res.send(rows);
-    }
-  });
-})
+  res.render('home');
+});
 //Search backend
 //
 
 app.get('/rsvp', function (req, res){
-    res.render('rsvp.html');
+    res.render('rsvp');
 });
 
 
