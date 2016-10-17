@@ -37,11 +37,15 @@ app.get('/', function (req,res) {
 });
 //Search backend
 //
-
-app.get('/rsvp', function (req, res){
-    res.render('rsvp');
+//
+// app.get('/rsvp', function (req, res){
+//     res.render('rsvp');
+// });
+app.get('/launch', function (req, res){
+  res.render('rsvp', {layout: false}, function (err, rsvp) {
+    res.send(rsvp);
+  });
 });
-
 
 app.post('/search', function(req, res, next){
   connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND first = ' + connection.escape(req.body.firstsearch)), function(err,result){
@@ -55,41 +59,6 @@ app.post('/search', function(req, res, next){
   });
 });
 
-
-
-
-//
-//     // function (){
-//     //   console.log('Lol' + req.body.lastsearch);
-//     //   value=5;
-//     //   console.log(value);
-//     // }
-//
-//     connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND first = ' + connection.escape(req.body.lastsearch)), function(err,result){
-//       if (err) {
-//       } else {
-// console.log(result);
-// res.send("complt");
-//
-//       }
-// });
-
-        // //Now query on last name, party_id
-        // connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND party_id = ' + connection.escape(result[0]['party_id'])), function(err,result){
-        //   if (err) {
-        //
-        //   } else {
-        //     //Return the party
-        //     var testVar=[];
-        //     testVar=result;
-        //     console.log(testVar);
-        //     //Then send response
-        //     res.send(testVar);
-        //   }
-        // });
-
-
-  // }
 
 app.listen(4000, function () {
   console.log('Example app listening on port 4000!');

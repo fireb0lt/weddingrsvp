@@ -59,8 +59,6 @@ body{
   border-radius: 10px;
   padding: 35px 15px;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 .rsvp-modal h2{
   font-weight: 300;
