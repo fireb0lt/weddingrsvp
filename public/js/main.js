@@ -20,7 +20,10 @@ $(function() {
             draggable: false,
             resizable: false,
             width: 400,
-            autoOpen: true
+            autoOpen: true,
+            close: function () {
+              $('#search-form').remove();
+            }
         });
       }
     });
@@ -36,7 +39,6 @@ $(function() {
     }
   }
   $('body').on('submit', '#search-form', function(e){
-      alert("HELP");
       e.preventDefault();
       if (validateSearch($('#textSearchLast'))==true && validateSearch($('#textSearchFirst'))){
         //Query can proceed
