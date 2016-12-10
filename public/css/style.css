@@ -2,11 +2,10 @@ h2{
   font-size: 40px;
   font-weight: normal;
   color:#222;
-
 }
 html{
-  font-family: "Cormorant Garamond",sans-serif;
-  font-weight: normal;
+  font-family: "Lato",sans-serif;
+  font-weight: 400;
   font-size: 16px;
 }
 h1, h2, h3{
@@ -51,11 +50,14 @@ body{
   display: block;
 }
 
-
+.ui-dialog-titlebar .ui-dialog-title{
+  display: none;
+}
 .rsvp-modal h2{
   font-weight: 300;
   margin: 0;
   margin-bottom: 30px;
+  text-align: left;
 }
 .sub-copyright{
   font-size: 12px;
@@ -86,17 +88,20 @@ body{
 }
 
 input{
-  font-family: "Cormorant Garamond";
+  font-family: "Lato";
 }
-input[type="submit"],a.button{
+input[type="button"],input[type="submit"],a.button{
   background: #111;
   border: none;
   border-radius: 0;
   color: #fff;
   padding: 5px 25px;
-  font-size: 30px;
-  font-weight: light;
+  font-size: 18px;
+  font-weight: 300;
   text-decoration: none;
+}
+input[type="button"]:hover,input[type="submit"]:hover,a.button:hover{
+  cursor: pointer;
 }
 a.button.light{
   background: #fff;
@@ -129,7 +134,7 @@ input:focus, *:focus{
   position: relative;
   z-index: 8;
   height: auto;
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
   background: #fff;
   border-radius: 10px;
@@ -173,3 +178,71 @@ top: 2px;
 background: #eee;
   z-index: 9
 }
+.check-field{
+  text-align: left;
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.check-field-content{
+  text-transform: capitalize;
+  position: relative;
+  /*padding-left: 40px;*/
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+input[type="checkbox"] + label:before {
+  content: "\f401";
+  font-size: 28px;
+  font-family: "Ionicons";
+  position: absolute;
+  left:0; top: 0;
+  width: 30px; height: 30px;
+  border: none;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* checked mark aspect */
+input[type="checkbox"]:checked + label:before {
+  content: "\f3ff";
+}
+input[type="checkbox"]:hover + label:before {
+  content: "\f3fe";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html{}

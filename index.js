@@ -10,8 +10,8 @@ var connection = mysql.createConnection({
   host:'localhost',
   user:'root',
   password: 'root',
-  database: 'hello',
-  port: '3306'
+  database: 'wedding',
+  port: '3307'
 });
 
 
@@ -46,7 +46,11 @@ app.get('/launch', function (req, res){
     res.send(rsvp);
   });
 });
-
+app.get('/addRsvp', function (req, res){
+  res.render('rsvp_enter', {layout: false}, function (err, rsvp_enter) {
+    res.send(rsvp_enter);
+  });
+});
 app.post('/search', function(req, res, next){
   connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND first = ' + connection.escape(req.body.firstsearch)), function(err,result){
     if (result.length>0) {
