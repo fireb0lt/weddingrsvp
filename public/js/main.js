@@ -16,6 +16,7 @@ function launchSearchModal(){
           autoOpen: true,
           close: function () {
             $('#search-form').remove();
+            $('.center.entry').show();
           }
       });
     }
@@ -48,7 +49,7 @@ var searchResults = [];
     e.preventDefault();
     //Ajax request to get view
     launchSearchModal();
-
+    $('.center.entry').hide();
   });
   //Validate
 
@@ -107,6 +108,7 @@ var searchResults = [];
                       autoOpen: true,
                       close: function () {
                         $('#enter-form').remove();
+                        $('.center.entry').show();
                       }
                   });
                   $('#enter-form .prev-btn').click(function(){
@@ -114,8 +116,7 @@ var searchResults = [];
                     searchResults=[];
                     launchSearchModal();
                   });
-                  $('#enter-form').on('submit', function(e){
-                    e.preventDefault();
+                  $('#enter-form .next-btn').on('click', function(){
                     $('#enter-form input').each(function(){
                       if ($(this).prop('checked')) {
                         var guest = $(this).siblings('.check-field-content').text();
@@ -134,6 +135,15 @@ var searchResults = [];
                       }
                     });
                     console.log(searchResults);
+                    //Now send to backend
+                    $.ajax({
+                      type: 'POST',
+                      data: JSON.stringify(searchResults),
+                      contentType: 'application/json',
+                      url: '/saversvp',
+                      success: function() {
+                      }
+                    });
                   });
                 }
               });
