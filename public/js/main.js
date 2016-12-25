@@ -2,6 +2,8 @@
 $(function() {
 // Global Variables
 var attendingGuests = [];
+var searchResults = [];
+
 // send to db
 
 function launchSearchModal(){
@@ -23,6 +25,42 @@ function launchSearchModal(){
   });
 }
 
+function goBack(){
+  $('.ui-dialog.enter-modal').show();
+  $('#finish-form').remove();
+  //$('.center.entry').show();
+}
+$('#finish-form .next-btn').click(function(){
+
+});
+$('#finish-form .prev-btn').click(function(){
+  goBack();
+});
+function launchFinishModal(){
+
+  $.ajax({
+    url:'/addFinish',
+    success: function(data){
+      $('.ui-dialog.enter-modal').hide();
+      $('body').append(data);
+      $('#finish-form').dialog({
+          draggable: false,
+          resizable: false,
+          width: 400,
+          autoOpen: true,
+          close: function () {
+            $('#enter-form').remove();
+            $('.center.entry').show();
+          }
+      });
+    }
+  });
+}
+
+
+$('body').on('click','#finish-form .prev-btn', function(){
+  goBack();
+});
 
 
 
@@ -31,16 +69,10 @@ function launchSearchModal(){
 
 
 
-
-
-
-
-
-var searchResults = [];
   $.fn.popUpMsg = function(text, duration){
       //Do cool animation
       $(this).text(text);
-      $(this).fadeIn(200).delay(duration).fadeOut(300);
+      $(this).fadeIn(200).delay(duration).fadeOut(650);
     }
 
   //Launch search
@@ -106,6 +138,7 @@ var searchResults = [];
                       resizable: false,
                       width: 400,
                       autoOpen: true,
+                      dialogClass:'enter-modal',
                       close: function () {
                         $('#enter-form').remove();
                         $('.center.entry').show();
@@ -142,6 +175,7 @@ var searchResults = [];
                       contentType: 'application/json',
                       url: '/saversvp',
                       success: function() {
+                            launchFinishModal();
                       }
                     });
                   });

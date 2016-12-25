@@ -12,11 +12,38 @@ h1, h2, h3{
   font-family: "Cormorant Garamond", serif;
 }
 
-div, input, span{
+div, input, span,textarea{
   box-sizing: border-box;
 }
 
+textarea{
+  resize: none;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 300;
+}
+.label{
+  width: 100%;
+  font-size: 24px;
+  font-weight: 300;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-left: 40px;
+position: relative;
+}
+.field{
+  position: relative;
+  margin-bottom: 25px;
+}
 
+.label:before{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  font-size: 40px;
+}
 .msg{
   position: absolute;
   height: auto;
@@ -75,7 +102,7 @@ body{
   bottom: -2px;
 }
 
-#search-form input[type="textbox"]{
+#search-form input[type="textbox"],textarea{
   width: 100%;
   padding:5px 15px;
   font-size: 20px;
@@ -83,7 +110,7 @@ body{
   border: 1px #aaa solid;
 }
 
-#search-form input[type="textbox"]:focus{
+#search-form input[type="textbox"]:focus,textarea:focus{
   border-color: #222;
 }
 

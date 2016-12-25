@@ -8,11 +8,10 @@ var app = express();
 
 var connection = mysql.createConnection({
   //properties
-  host:'localhost',
-  user:'root',
-  password: 'root',
-  database: 'wedding',
-  port: '3307'
+  host : process.env.RDS_HOSTNAME,
+  user : process.env.RDS_USERNAME,
+  password : process.env.RDS_PASSWORD,
+  port : process.env.RDS_PORT
 });
 
 
@@ -53,6 +52,11 @@ app.get('/addRsvp', function (req, res){
     res.send(rsvp_enter);
   });
 });
+app.get('/addFinish', function (req, res){
+  res.render('rsvp_finish', {layout: false}, function (err, rsvp_finish) {
+    res.send(rsvp_finish);
+  });
+});
 app.post('/saversvp',function (req, res) {
   console.log(req.body);
   for (var i = 0; i < req.body.length; i++) {
@@ -61,6 +65,7 @@ app.post('/saversvp',function (req, res) {
     connection.query(mysql.format(query), function(err,result){
 
     });
+    res.send();
   }
 
 });
