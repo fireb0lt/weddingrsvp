@@ -24,7 +24,7 @@ connection.connect(function (error) {
 });
 
 
-
+app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -82,6 +82,6 @@ app.post('/search', function(req, res, next){
 });
 
 
-app.listen(4000, function () {
+app.listen(app.get('port'), function () {
   console.log('Example app listening on port 4000!');
 });
