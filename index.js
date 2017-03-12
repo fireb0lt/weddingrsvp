@@ -5,13 +5,13 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var Q = require('q');
 var app = express();
-var db_config = mysql.createConnection({
+var db_config = {
   //properties
   host : 'us-cdbr-iron-east-03.cleardb.net',
   user : 'bc5d91c9f9e722',
   password : '30ea785d',
   database : 'heroku_8ca4fc2f56bc78e',
-});
+};
 var connection;
 
 
