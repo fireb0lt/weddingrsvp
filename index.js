@@ -31,7 +31,9 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(favicon(__dirname + '/public/favicon.ico'));
-
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
 
 app.get('/', function (req,res) {
   res.render('home');
@@ -79,9 +81,4 @@ app.post('/search', function(req, res, next){
       res.send('Sorry, we can\'t find that name, try again!');
     }
   });
-});
-
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
 });
