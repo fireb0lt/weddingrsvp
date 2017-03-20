@@ -5,20 +5,15 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var Q = require('q');
 var app = express();
-var db_config = {
-  //properties
-  host : 'us-cdbr-iron-east-03.cleardb.net',
-  user : 'bc5d91c9f9e722',
-  password : '30ea785d',
-  database : 'heroku_8ca4fc2f56bc78e',
-};
+var config = require('./config.js').get(process.env.NODE_ENV);
+console.log(config.db_config);
 var connection;
 
 
 
 
 function handleDisconnect() {
-  connection = mysql.createConnection(db_config); // Recreate the connection, since
+  connection = mysql.createConnection(config.db_config); // Recreate the connection, since
                                                   // the old one cannot be reused.
 
   connection.connect(function(err) {              // The server is either down
@@ -43,6 +38,11 @@ handleDisconnect();
 
 
 app.set('port', (process.env.PORT || 5000));
+//NEED ENV variable
+
+
+
+
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

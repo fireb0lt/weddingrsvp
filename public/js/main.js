@@ -110,7 +110,7 @@ $('body').on('click','#finish-form .prev-btn', function(){
             if (data=='Sorry, we can\'t find that name, try again!'){
               $('.msg').popUpMsg(data,2500);
             } else {
-              $('.msg').popUpMsg(JSON.stringify(data),2500);
+              //$('.msg').popUpMsg(JSON.stringify(data),2500);
               searchResults=data;
             //  console.log(searchResults);
               $.ajax({
