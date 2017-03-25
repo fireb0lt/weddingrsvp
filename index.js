@@ -6,7 +6,6 @@ var favicon = require('serve-favicon');
 var Q = require('q');
 var app = express();
 var config = require('./config.js').get(process.env.NODE_ENV);
-console.log(config.db_config);
 var connection;
 
 
@@ -78,9 +77,7 @@ app.get('/addFinish', function (req, res){
   });
 });
 app.post('/saversvp',function (req, res) {
-  console.log(req.body);
   for (var i = 0; i < req.body.length; i++) {
-    console.log(req.body[i].first);
     var query = 'UPDATE guest SET rsvp="'+req.body[i].rsvp+'" WHERE last = "' +req.body[i].last + '"AND first = "' + req.body[i].first + '"';
     connection.query(mysql.format(query), function(err,result){
 
