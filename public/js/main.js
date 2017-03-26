@@ -35,6 +35,7 @@ $('#finish-form .next-btn').click(function(){
 });
 $('#finish-form .prev-btn').click(function(){
   goBack();
+  $('#finish-form').remove();
 });
 function launchFinishModal(){
 
@@ -50,6 +51,7 @@ function launchFinishModal(){
           autoOpen: true,
           close: function () {
             $('#enter-form').remove();
+            $('#finish-form').remove();
             $('.center.entry').show();
           }
       });
