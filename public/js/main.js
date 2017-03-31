@@ -5,7 +5,11 @@ var attendingGuests = [];
 var searchResults = [];
 
 // send to db
-
+function destroyAllModals(){
+  $('#search-form').remove();
+  $('#finish-form').remove();
+  $('#enter-form').remove();
+}
 function launchSearchModal(){
   $.ajax({
     url:'/launch',
@@ -17,7 +21,7 @@ function launchSearchModal(){
           width: 400,
           autoOpen: true,
           close: function () {
-            $('#search-form').remove();
+            destroyAllModals();
             $('.center.entry').show();
           }
       });
@@ -35,10 +39,8 @@ $('#finish-form .next-btn').click(function(){
 });
 $('#finish-form .prev-btn').click(function(){
   goBack();
-  $('#finish-form').remove();
 });
 function launchFinishModal(){
-
   $.ajax({
     url:'/addFinish',
     success: function(data){
@@ -50,8 +52,7 @@ function launchFinishModal(){
           width: 400,
           autoOpen: true,
           close: function () {
-            $('#enter-form').remove();
-            $('#finish-form').remove();
+            destroyAllModals();
             $('.center.entry').show();
           }
       });
@@ -62,6 +63,7 @@ function launchFinishModal(){
 
 $('body').on('click','#finish-form .prev-btn', function(){
   goBack();
+
 });
 
 
@@ -142,7 +144,7 @@ $('body').on('click','#finish-form .prev-btn', function(){
                       autoOpen: true,
                       dialogClass:'enter-modal',
                       close: function () {
-                        $('#enter-form').remove();
+                        destroyAllModals();
                         $('.center.entry').show();
                       }
                   });
@@ -177,7 +179,7 @@ $('body').on('click','#finish-form .prev-btn', function(){
                       contentType: 'application/json',
                       url: '/saversvp',
                       success: function() {
-                            launchFinishModal();
+                          launchFinishModal();
                       }
                     });
                   });

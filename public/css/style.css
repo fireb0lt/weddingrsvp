@@ -184,6 +184,8 @@ h1.site-title{
   letter-spacing: 10px;
   font-weight: 300;
   margin-bottom: 40px;
+  margin-top: 0;
+  padding-top: 50px;
 }
 h1.site-title span{
   font-size: 25px;
