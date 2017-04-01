@@ -7,7 +7,7 @@ var Q = require('q');
 var app = express();
 var config = require('./config.js').get(process.env.NODE_ENV);
 var connection;
-
+var party_id_name="";
 
 
 
@@ -77,19 +77,42 @@ app.get('/addFinish', function (req, res){
   });
 });
 app.post('/saversvp',function (req, res) {
-  for (var i = 0; i < req.body.length; i++) {
-    var query = 'UPDATE guest SET rsvp="'+req.body[i].rsvp+'" WHERE last = "' +req.body[i].last + '"AND first = "' + req.body[i].first + '"';
+  if (req.body.length==1){
+    party_id_name=req.body.first;
+    var query = 'UPDATE guest SET rsvp="'+req.body.rsvp+'" WHERE last = "' +req.body.last + '"AND first = "' + req.body.first + '"';
     connection.query(mysql.format(query), function(err,result){
 
     });
     res.send();
+  } else {
+    party_id_name=req.body[0].first;
+    for (var i = 0; i < req.body.length; i++) {
+      var query = 'UPDATE guest SET rsvp="'+req.body[i].rsvp+'" WHERE last = "' +req.body[i].last + '"AND first = "' + req.body[i].first + '"';
+      connection.query(mysql.format(query), function(err,result){
+
+      });
+      res.send();
+    }
   }
 
+
+});
+app.post('/finalize',function (req, res) {
+  var details = req.body;
+  console.log(details.message);
+  var query = 'UPDATE guest SET comment="'+details.message+'", '+'song="'+details.song+'", '+'food="'+details.food+'" WHERE last = "' +details.name + '" AND first = "' + party_id_name + '" ';
+  console.log(query);
+  connection.query(mysql.format(query), function(err,result){
+
+  });
+
+  res.send();
 });
 app.post('/search', function(req, res, next){
   connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND first = ' + connection.escape(req.body.firstsearch)), function(err,result){
     if (result.length>0) {
       connection.query(mysql.format('SELECT * FROM guest WHERE last = ' + connection.escape(req.body.lastsearch) + ' AND party_id = ' + connection.escape(result[0].party_id)), function(err,result){
+          party_id_var = result[0].party_id;
           res.send(result);
       });
     } else {

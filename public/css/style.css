@@ -353,9 +353,9 @@ margin-right: 0;
   font-size: 16px;
 }
 
-
-
-
+.ui-dialog{
+  width: 100% !important;
+}
 
 
 

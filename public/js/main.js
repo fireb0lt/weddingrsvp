@@ -3,7 +3,7 @@ $(function() {
 // Global Variables
 var attendingGuests = [];
 var searchResults = [];
-
+var currentLast ='';
 // send to db
 function destroyAllModals(){
   $('#search-form').remove();
@@ -49,7 +49,7 @@ function launchFinishModal(){
       $('#finish-form').dialog({
           draggable: false,
           resizable: false,
-          width: 400,
+          width: 600,
           autoOpen: true,
           close: function () {
             destroyAllModals();
@@ -66,7 +66,23 @@ $('body').on('click','#finish-form .prev-btn', function(){
 
 });
 
+$('body').on('click','#finish-form .next-btn', function(){
+  var finalDetails={};
+  finalDetails.name=currentLast;
+  finalDetails.message=$('#finish-form .message').val();
+  finalDetails.song=$('#finish-form .songs').val();
+  finalDetails.food=$('#finish-form .food').val();
+  $.ajax({
+    type: 'POST',
+    data: JSON.stringify(finalDetails),
+    contentType: 'application/json',
+    url: '/finalize',
+    success: function() {
+        console.log('Finalized');
+    }
+  });
 
+});
 
 
 
@@ -124,6 +140,7 @@ $('body').on('click','#finish-form .prev-btn', function(){
                   $('body').append(data);
                 //  console.log(searchResults);
                   // add guests to dialog html
+                  currentLast=searchResults[0].last;
                   $('#enter-form h2').text('RSVP for the ' + searchResults[0].last.charAt(0).toUpperCase() + searchResults[0].last.slice(1) + ' party.')
                   //FOREACH guest
                     //add html wrapper
@@ -190,6 +207,9 @@ $('body').on('click','#finish-form .prev-btn', function(){
         });
       }
     });
+
+
+
 
 
 
