@@ -173,6 +173,7 @@ input:focus, *:focus{
   background-position: center;
   display: block;
   position: relative;
+  padding: 0 20px;
 }
 .center.entry{
   top: 50px;
@@ -354,7 +355,7 @@ margin-right: 0;
 }
 
 .ui-dialog{
-  width: 100% !important;
+  width: 90% !important;
 }
 
 
