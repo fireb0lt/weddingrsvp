@@ -85,14 +85,12 @@ $('body').on('click','#finish-form .next-btn', function(){
   finalDetails.message=$('#finish-form .message').val().replace(/\"/g,'\\"');
   finalDetails.song=$('#finish-form .songs').val().replace(/\"/g,'\\"');
   finalDetails.food=$('#finish-form .food').val().replace(/\"/g,'\\"');
-  console.log(finalDetails);
   $.ajax({
     type: 'POST',
     data: JSON.stringify(finalDetails),
     contentType: 'application/json',
     url: '/finalize',
     success: function() {
-        console.log('Finalized');
         completeModal();
     }
   });
@@ -141,19 +139,15 @@ $('body').on('click','#finish-form .next-btn', function(){
           contentType: 'application/json',
           url: '/search',
           success: function(data) {
-          //  console.log(data);
             if (data=='Sorry, we can\'t find that name, try again!'){
               $('.msg').popUpMsg(data,2500);
             } else {
-              //$('.msg').popUpMsg(JSON.stringify(data),2500);
               searchResults=data;
-            //  console.log(searchResults);
               $.ajax({
                 url:'/addRsvp',
                 success: function(data){
                   $('#search-form').remove();
                   $('body').append(data);
-                //  console.log(searchResults);
                   // add guests to dialog html
                   currentLast=searchResults[0].last;
                   $('#enter-form h2').text('RSVP for the ' + searchResults[0].last.charAt(0).toUpperCase() + searchResults[0].last.slice(1) + ' party.')
@@ -161,7 +155,6 @@ $('body').on('click','#finish-form .next-btn', function(){
                     //add html wrapper
                     //add checkbox to html wrapper
                     $.each(searchResults, function( key, value ) {
-                        console.log(value.first);
                         $('#enter-form .content').append('<div class=\'check-field\'> <input type=\'checkbox\' id=\'guest-check-'+key+'\'><label for=\'guest-check-'+key+'\'></label> <span class=\'check-field-content\'>'+value.first+'</span></div>');
                     });
 
@@ -203,7 +196,7 @@ $('body').on('click','#finish-form .next-btn', function(){
                         });
                       }
                     });
-                    console.log(searchResults);
+
                     //Now send to backend
                     $.ajax({
                       type: 'POST',
