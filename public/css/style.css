@@ -359,9 +359,29 @@ margin-right: 0;
 
 
 
-
-
-
+.ion-ios-checkmark.finish-ic{
+  position: fixed;
+  font-size: 15px;
+  left: 50%;
+  z-index: 999;
+  top:50%;
+  display: block;
+  transform: translate(-50%,-50%);
+  opacity: .1;
+}
+.ion-ios-checkmark.finish-ic::after{
+  position: fixed;
+width: 75%;
+height: 50%;
+border-radius: 1000px;
+content: "";
+background: #fff;
+left: 50%;
+  z-index: -1;
+  top:50%;
+  display: block;
+  transform: translate(-50%,-50%);
+}
 
 
 

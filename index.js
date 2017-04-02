@@ -81,25 +81,25 @@ app.post('/saversvp',function (req, res) {
     party_id_name=req.body.first;
     var query = 'UPDATE guest SET rsvp="'+req.body.rsvp+'" WHERE last = "' +req.body.last + '"AND first = "' + req.body.first + '"';
     connection.query(mysql.format(query), function(err,result){
-
+      res.send();
     });
-    res.send();
   } else {
     party_id_name=req.body[0].first;
     for (var i = 0; i < req.body.length; i++) {
       var query = 'UPDATE guest SET rsvp="'+req.body[i].rsvp+'" WHERE last = "' +req.body[i].last + '"AND first = "' + req.body[i].first + '"';
       connection.query(mysql.format(query), function(err,result){
-
+        res.send();
       });
-      res.send();
     }
   }
 
 
 });
+
 app.post('/finalize',function (req, res) {
   var details = req.body;
-  console.log(details.message);
+
+
   var query = 'UPDATE guest SET comment="'+details.message+'", '+'song="'+details.song+'", '+'food="'+details.food+'" WHERE last = "' +details.name + '" AND first = "' + party_id_name + '" ';
   console.log(query);
   connection.query(mysql.format(query), function(err,result){

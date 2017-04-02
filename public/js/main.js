@@ -28,7 +28,20 @@ function launchSearchModal(){
     }
   });
 }
+function completeModal(){
+  $('#finish-form').remove();
+  $('body').append('<div class="ion-ios-checkmark finish-ic"></div>');
+  $('.ion-ios-checkmark.finish-ic').animate({fontSize: "150px",opacity:"1" }, 300, function(){
+    $('.ion-ios-checkmark.finish-ic').animate({color:"#00c96c" }, 100).delay(500).animate({fontSize: "2000px",opacity:"0.1"}, 200, function(){
+      $('.ion-ios-checkmark.finish-ic').remove();
+      $('.center.entry').show();
+    });
+  });
 
+  //$('.ion-ios-checkmark.finish-ic::after').animate({width: "150px",height:"100px" }, 300);
+
+
+}
 function goBack(){
   $('.ui-dialog.enter-modal').show();
   $('#finish-form').remove();
@@ -69,9 +82,10 @@ $('body').on('click','#finish-form .prev-btn', function(){
 $('body').on('click','#finish-form .next-btn', function(){
   var finalDetails={};
   finalDetails.name=currentLast;
-  finalDetails.message=$('#finish-form .message').val();
-  finalDetails.song=$('#finish-form .songs').val();
-  finalDetails.food=$('#finish-form .food').val();
+  finalDetails.message=$('#finish-form .message').val().replace(/\"/g,'\\"');
+  finalDetails.song=$('#finish-form .songs').val().replace(/\"/g,'\\"');
+  finalDetails.food=$('#finish-form .food').val().replace(/\"/g,'\\"');
+  console.log(finalDetails);
   $.ajax({
     type: 'POST',
     data: JSON.stringify(finalDetails),
@@ -79,6 +93,7 @@ $('body').on('click','#finish-form .next-btn', function(){
     url: '/finalize',
     success: function() {
         console.log('Finalized');
+        completeModal();
     }
   });
 
