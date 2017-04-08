@@ -115,8 +115,8 @@ app.post('/search', function(req, res, next){
 
 
 //details
-app.get('/launch', function (req, res){
-  res.render('rsvp', {layout: false}, function (err, rsvp) {
-    res.send(rsvp);
+app.get('/det', function (req, res){
+  res.render('details', {layout: false}, function (err, details) {
+    res.send(details);
   });
 });

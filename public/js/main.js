@@ -9,6 +9,26 @@ function destroyAllModals(){
   $('#search-form').remove();
   $('#finish-form').remove();
   $('#enter-form').remove();
+  $('#details-page').remove();
+}
+function launchDetails(){
+  $.ajax({
+    url:'/det',
+    success: function(data){
+      $('body').append(data);
+      $('#details-page').dialog({
+          draggable: false,
+          resizable: false,
+          width: 400,
+          autoOpen: true,
+          dialogClass: "details-d",
+          close: function () {
+            destroyAllModals();
+            $('.center.entry').show();
+          }
+      });
+    }
+  });
 }
 function launchSearchModal(){
   $.ajax({
@@ -107,13 +127,20 @@ $('body').on('click','#finish-form .next-btn', function(){
       $(this).text(text);
       $(this).fadeIn(200).delay(duration).fadeOut(650);
     }
+//Launch details
+$('#rsvp-launch').click(function(e){
 
+  e.preventDefault();
+  //Ajax request to get view
+  launchSearchModal();
+  $('.center.entry').hide();
+});
   //Launch search
-  $('#rsvp-launch').click(function(e){
+  $('#details').click(function(e){
 
     e.preventDefault();
     //Ajax request to get view
-    launchSearchModal();
+    launchDetails();
     $('.center.entry').hide();
   });
   //Validate

@@ -384,8 +384,44 @@ left: 50%;
   transform: translate(-50%,-50%);
 }
 
-
-
-
-
+.ui-dialog.details-d{
+  max-width: 900px;
+  position: absolute;
+    top: 80px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+.descript-cont a{
+  margin-right: 20px;
+}
+.welm{
+  height: 18px;
+  display: inline-block;
+  top:-2px;
+  position: relative;
+}
+.anth{
+  height: 20px;
+  display: inline-block;
+}
+.amazon{
+  height: 20px;
+  display: inline-block;
+  opacity: 0.85;
+}
+.amazon img,.anth img,.welm img{
+  width: auto;
+  height: 100%;
+}
+img.map{
+  width: 400px;
+  border-radius: 2000px;
+}
+.section-header{
+  text-align: left;
+  font-size: 24px;
+}
+.descript-cont{
+  text-align: left;
+}
 html{}
