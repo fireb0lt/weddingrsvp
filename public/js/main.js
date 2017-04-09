@@ -54,6 +54,7 @@ function completeModal(){
   $('.ion-ios-checkmark.finish-ic').animate({fontSize: "150px",opacity:"1" }, 300, function(){
     $('.ion-ios-checkmark.finish-ic').animate({color:"#00c96c" }, 100).delay(500).animate({fontSize: "2000px",opacity:"0.1"}, 200, function(){
       $('.ion-ios-checkmark.finish-ic').remove();
+      destroyAllModals();
       $('.center.entry').show();
     });
   });
