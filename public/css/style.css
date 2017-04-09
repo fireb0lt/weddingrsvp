@@ -235,30 +235,32 @@ h1.site-title span{
   padding: 35px 15px;
   position: relative;
 }
-button.ui-dialog-titlebar-close{
-  position: absolute;
-  left: -13px;
-  top: -16px;
-  z-index: 10;
-  border: none;
-  font-size: 0;
-  height: 0;
-  width: 0;
-  display: inline-block;
-  padding: 0;
-  box-sizing: border-box;
+button.ui-dialog-titlebar-close {
+    position: absolute;
+    left: -13px;
+    top: -16px;
+    z-index: 10;
+    border: none;
+    font-size: 0;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    padding: 0;
+    box-sizing: border-box;
 }
 button.ui-dialog-titlebar-close:hover{
   cursor: pointer;
 }
-button.ui-dialog-titlebar-close:before{
-  display: inline-block;
-  position: absolute;
-  content: "\f406";
-  font-size: 36px;
-  font-family:"Ionicons";
-  font-weight: normal;
-  z-index: 10;
+button.ui-dialog-titlebar-close::before {
+    display: inline-block;
+    position: absolute;
+    content: "\f406";
+    font-size: 36px;
+    font-family: "Ionicons";
+    font-weight: normal;
+    z-index: 10;
+    left: 0;
+    top: 0px;
 }
 button.ui-dialog-titlebar-close:after{
   display: inline-block;
