@@ -247,6 +247,7 @@ button.ui-dialog-titlebar-close {
     display: inline-block;
     padding: 0;
     box-sizing: border-box;
+    background: none;
 }
 button.ui-dialog-titlebar-close:hover{
   cursor: pointer;
@@ -352,14 +353,16 @@ margin-right: 0;
 }
 
 .rsvp-modal p{
-  text-align: left;
-  font-size: 16px;
+  text-align: center;
+  font-size: 18px;
 }
 
 .ui-dialog{
   width: 90% !important;
 }
-
+.main-block a{
+  color: #222;
+}
 
 
 .ion-ios-checkmark.finish-ic{
@@ -424,6 +427,10 @@ img.map{
   font-size: 24px;
 }
 .descript-cont{
-  text-align: left;
+  text-align: center;
+}
+
+.details-d .rsvp-modal h2{
+  text-align: center;
 }
 html{}
