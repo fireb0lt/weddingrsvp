@@ -360,7 +360,7 @@ margin-right: 0;
 .ui-dialog{
   width: 90% !important;
 }
-.main-block a{
+a{
   color: #222;
 }
 
@@ -434,3 +434,23 @@ img.map{
   text-align: center;
 }
 html{}
+.content-block.registry{
+  margin-bottom: 40px;
+}
+.content-block.lodge .hotel{
+  text-align: left;
+  display: inline-block;
+  margin-right: 20px;
+}
+.content-block.lodge .hotel:last-child{
+  margin-right: 0px;
+}
+.content-block.lodge .hotel p, .content-block.lodge .hotel a{
+  text-align: left;
+}
+.content-block.lodge .hotel p{
+  font-size: 16px;
+}
+.content-block.lodge .hotel a{
+  font-size: 18px;
+}
