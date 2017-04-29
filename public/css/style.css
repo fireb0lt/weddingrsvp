@@ -436,6 +436,7 @@ img.map{
 html{}
 .content-block.registry{
   margin-bottom: 40px;
+  padding-top: 40px;
 }
 .content-block.lodge .hotel{
   text-align: left;
