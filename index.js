@@ -66,6 +66,24 @@ app.get('/launch', function (req, res){
     res.send(rsvp);
   });
 });
+app.get('/whoiscoming', function (req, res){
+  var rsvpYes;
+  var rsvpNo;
+  var rsvpNa;
+  connection.query(mysql.format('SELECT COUNT(rsvp) AS rsvp_num FROM guest WHERE rsvp = 1'), function(err,result){
+    rsvpYes=result[0].rsvp_num;
+    connection.query(mysql.format('SELECT COUNT(rsvp) AS rsvp_no FROM guest WHERE rsvp = 0'), function(err,result){
+      rsvpNo=result[0].rsvp_no;
+      connection.query(mysql.format('SELECT COUNT(rsvp) AS rsvp_na FROM guest WHERE rsvp = 2'), function(err,result){
+        rsvpNa=result[0].rsvp_na;
+        res.render('whoiscoming', {yes_num:rsvpYes, no_num:rsvpNo,na_num:rsvpNa}, function (err, whoiscoming) {
+          res.send(whoiscoming);
+        });
+      });
+    });
+  });
+});
+
 app.get('/addRsvp', function (req, res){
   res.render('rsvp_enter', {layout: false}, function (err, rsvp_enter) {
     res.send(rsvp_enter);
@@ -83,7 +101,6 @@ app.post('/saversvp',function (req, res) {
       connection.query(mysql.format(query), function(err,result){
         res.send();
       });
-
   }
 
 

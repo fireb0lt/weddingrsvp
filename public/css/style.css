@@ -455,3 +455,9 @@ html{}
 .content-block.lodge .hotel a{
   font-size: 18px;
 }
+.norm-page-body{
+  background: rgba(255,255,255,0.95);
+  padding: 20px;
+  margin-top: 25px;
+  border-top: #99ff99 2px solid;
+}
