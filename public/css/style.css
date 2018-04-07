@@ -186,7 +186,8 @@ h1.site-title{
   font-weight: 300;
   margin-bottom: 40px;
   margin-top: 0;
-  padding-top: 50px;
+  padding-top: 100px;
+  color: #fff;
 }
 h1.site-title span{
   font-size: 25px;
@@ -202,21 +203,22 @@ h1.site-title span{
   left: 50%;
   transform: translateX(-50%);
   margin-top: 20px;
+  color: #fff;
 }
 .site-date:after,.site-date:before{
   position: absolute;
   display: block;
-  width: 50px;
+  width: 25px;
   height: 1px;
-  border-bottom: 1px solid #222;
+  border-bottom: 2px solid #fff;
   top: 10px;
   content: "";
 }
 .site-date:after{
-  right: -55px
+  right: -35px
 }
 .site-date:before{
-  left: -55px
+  left: -35px
 }
 .button-menu{
   margin-top: 40px;
