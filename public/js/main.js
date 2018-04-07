@@ -1,5 +1,6 @@
 
 $(function() {
+  $( "#table-wrap" ).tabs();
 // Global Variables
 var attendingGuests = [];
 var searchResults = [];
