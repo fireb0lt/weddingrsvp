@@ -403,26 +403,33 @@ left: 50%;
   margin-right: 20px;
 }
 .welm{
-  height: 18px;
+  height: 70px;
   display: inline-block;
   top:-2px;
   position: relative;
 }
 .anth{
-  height: 20px;
+  height: 70px;
   display: inline-block;
 }
 .amazon{
-  height: 20px;
+  height: 40px;
   display: inline-block;
   opacity: 0.85;
+  top: -10px;
+  margin-left: 10px;
+  position: relative;
+}
+.descript-cont p{
+  margin-bottom: 20px;
 }
 .amazon img,.anth img,.welm img{
   width: auto;
   height: 100%;
 }
 img.map{
-  width: 400px;
+  width: 300px;
+  border: 1px #999 solid;
   border-radius: 2000px;
 }
 .section-header{
@@ -438,8 +445,8 @@ img.map{
 }
 html{}
 .content-block.registry{
-  margin-bottom: 40px;
   padding-top: 40px;
+  border-top: 1px dashed #ccc;
 }
 .content-block.lodge .hotel{
   text-align: left;
@@ -500,4 +507,11 @@ html{}
   background: #fff;
   margin: 0;
   padding: 10px 15px;
+}
+p.first-add{
+  margin-bottom: 0;
+}
+p.second-add{
+  margin-top: 0;
+  font-size: 0.9em;
 }
